@@ -21,7 +21,7 @@ public class Conta {
 	
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, length = 20)
-	private String numero;
+	private int numero;
 	
 	@Column(nullable = false, scale = 2)
 	private double saldo = 0;
@@ -31,7 +31,7 @@ public class Conta {
 	
 	Conta(){}
 	
-	Conta(String loginUsuario, String numero, double saldo, String descricao){
+	Conta(String loginUsuario, int numero, double saldo, String descricao){
 		this.loginUsuario=loginUsuario;
 		this.numero= numero;
 		this.saldo=saldo;
@@ -51,10 +51,10 @@ public class Conta {
 	public void setLoginUsuario(String loginUsuario) {
 		this.loginUsuario = loginUsuario;
 	}
-	public String getNumero() {
+	public int getNumero() {
 		return numero;
 	}
-	public void setNumero(String numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 	public double getSaldo() {
