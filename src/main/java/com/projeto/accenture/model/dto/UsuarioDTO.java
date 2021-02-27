@@ -1,4 +1,4 @@
-package com.projeto.accenture.model;
+package com.projeto.accenture.model.dto;
 
 public class UsuarioDTO {
 	private String login;

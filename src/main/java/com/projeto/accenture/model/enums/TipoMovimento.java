@@ -1,4 +1,4 @@
-package com.projeto.accenture.enums;
+package com.projeto.accenture.model.enums;
 
 public enum TipoMovimento {
 	
