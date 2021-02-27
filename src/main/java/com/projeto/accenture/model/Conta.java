@@ -7,22 +7,17 @@ public class Conta {
 	private int id;
 	private String loginUsuario;
 	private String numero;
-	private double saldo;
-	//private TipoConta descricao;
+	private double saldo = 0;
+	private String descricao;
 	
 	Conta(){
-		this.saldo=0;
 	}
 	
-	Conta(String loginUsuario){
-		this.loginUsuario=loginUsuario;
-		this.saldo=0;
-	}
-	
-	Conta(String loginUsuario, String numero){
+	Conta(String loginUsuario, String numero, double saldo, String descricao){
 		this.loginUsuario=loginUsuario;
 		this.numero= numero;
-		this.saldo=0;
+		this.saldo=saldo;
+		this.descricao=descricao;
 	}
 	
 	
@@ -50,6 +45,24 @@ public class Conta {
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	@Override
+	public String toString() {
+		return "Conta [id=" + id + ", loginUsuario=" + loginUsuario + ", numero=" + numero + ", saldo=" + saldo
+				+ ", descricao=" + descricao + "]";
+	}
+
+	
+	
+	
 	
 		
 	
