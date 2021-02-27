@@ -1,17 +1,35 @@
 package com.projeto.accenture.model;
 
-import com.projeto.accenture.enums.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="contas")
 public class Conta {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_conta")
 	private int id;
+	
+	@Column(nullable = false, length = 20 , name="login")
 	private String loginUsuario;
+	
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, length = 20)
 	private String numero;
+	
+	@Column(nullable = false, scale = 2)
 	private double saldo = 0;
+	
+	@Column(nullable = false , name="desc_conta")
 	private String descricao;
 	
-	Conta(){
-	}
+	Conta(){}
 	
 	Conta(String loginUsuario, String numero, double saldo, String descricao){
 		this.loginUsuario=loginUsuario;
