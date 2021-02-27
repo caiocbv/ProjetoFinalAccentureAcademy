@@ -6,6 +6,17 @@ public class PlanosDeConta {
 	private String descricao;
 	private String login;
 	//private TipoMovimento tipoMovimento
+	
+	public PlanosDeConta(){
+		
+	}
+	
+	public PlanosDeConta(int id,String descricao,String login){
+		this.id=id;
+		this.descricao=descricao;
+		this.login=login;
+		
+	}
 	public int getId() {
 		return id;
 	}
