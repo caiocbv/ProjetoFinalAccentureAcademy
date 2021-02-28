@@ -2,6 +2,8 @@ package com.projeto.accenture.model.dto;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.projeto.accenture.model.Usuario;
+
 public class LoginDTO {
 	
 	@NotEmpty(message="Preenchimento obrigatório")
@@ -11,8 +13,14 @@ public class LoginDTO {
 	private String senha;
 	
 	public LoginDTO() {
-		// TODO Auto-generated constructor stub
 	}
+	
+	public LoginDTO(Usuario obj) {
+		this.login = obj.getLogin();
+		this.senha = obj.getSenha();
+	}
+
+
 
 	public String getLogin() {
 		return login;
