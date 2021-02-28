@@ -1,9 +1,19 @@
 package com.projeto.accenture.model.dto;
 
+import javax.validation.constraints.NotEmpty;
+
 public class UsuarioDTO {
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String login;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String nome;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String senha;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String cpf;
 	
 	public UsuarioDTO() {

@@ -1,21 +1,39 @@
 package com.projeto.accenture.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.projeto.accenture.model.enums.TipoMovimento;
+
+@Entity
+@Table(name="planosContas")
 public class PlanosDeConta {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_planoConta")
 	private int id;
+	
+	@Column(nullable = false, name="desc_planoConta")
 	private String descricao;
+	
+	@Column(nullable = false)
 	private String login;
-	//private TipoMovimento tipoMovimento
 	
-	public PlanosDeConta(){
-		
-	}
+
+	@Column(nullable = false)
+	private int tipoMovimento;
 	
-	public PlanosDeConta(int id,String descricao,String login){
-		this.id=id;
-		this.descricao=descricao;
-		this.login=login;
-		
+	public PlanosDeConta() {}
+	
+	public PlanosDeConta(String descricao, Usuario login, int tipoMovimento) {
+		this.descricao = descricao;
+		this.login = login.getLogin();
+		this.tipoMovimento = tipoMovimento;
 	}
 	public int getId() {
 		return id;
@@ -34,6 +52,14 @@ public class PlanosDeConta {
 	}
 	public void setLogin(String login) {
 		this.login = login;
+	}
+	
+	public TipoMovimento getTipoMovimento() {
+		return TipoMovimento.toEnum(tipoMovimento);
+	}
+
+	public void setTipoMovimento(TipoMovimento tipoMovimento) {
+		this.tipoMovimento = tipoMovimento.getCod();
 	}
 	@Override
 	public String toString() {
