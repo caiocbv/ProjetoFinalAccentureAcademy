@@ -38,6 +38,9 @@ public class Lancamento {
 	private Double valor;
 	
 	@Column(nullable = false)
+	private String descricao;
+	
+	@Column(nullable = false)
 	private int tipoMovimento;
 	
 	@Column(nullable = false, columnDefinition = "DATE")
@@ -46,11 +49,12 @@ public class Lancamento {
 	
 	public Lancamento() {}
 
-	public Lancamento(Conta conta, PlanosDeConta planoConta, Double valor, int tipoMovimento,
+	public Lancamento(Conta conta, PlanosDeConta planoConta, Double valor,String descricao, int tipoMovimento,
 			LocalDate dataLancamento) {
 		this.conta = conta;
 		this.planoConta = planoConta;
 		this.valor = valor;
+		this.descricao = descricao;
 		this.tipoMovimento = tipoMovimento;
 		this.dataLancamento = dataLancamento;
 	}
@@ -104,12 +108,23 @@ public class Lancamento {
 	public void setDataLancamento(LocalDate dataLancamento) {
 		this.dataLancamento = dataLancamento;
 	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
 	@Override
 	public String toString() {
 		return "Lancamento [id=" + id + ", conta=" + conta + ", planoConta=" + planoConta + ", valor=" + valor
-				+ ", tipoMovimento=" + tipoMovimento + "]";
+				+ ", descricao=" + descricao + ", tipoMovimento=" + tipoMovimento + ", dataLancamento=" + dataLancamento
+				+ "]";
 	}
+
+	
 	
 	
 	
