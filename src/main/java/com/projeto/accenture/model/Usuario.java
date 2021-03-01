@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -18,16 +19,19 @@ public class Usuario{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
+	@NotEmpty(message="Preenchimento a senha é obrigatório")
 	@Column(nullable = false)
     private String senha;
 	
+	@NotEmpty(message="Preenchimento do nome obrigatório")
 	@Column(nullable = false)
     private String nome;
 	
+	@NotEmpty(message="Preenchimento do CPF obrigatório")
 	@Column(nullable = false)
-	@CPF(message="CPF Inválido")
     private String cpf;
 	
+	@NotEmpty(message="Preenchimento do login obrigatório")
 	@Column(nullable = false, length = 20)
     private String login;
 

@@ -61,6 +61,14 @@ public class IUsuarioService {
 			String hashedPassword = passwordEncoder.encode(obj.getSenha());
 			obj.setSenha(hashedPassword);
 			
+			if (obj.getLogin().length() > 20) {
+				throw new IllegalArgumentException("O login não deve conter mais que 20 caracteres.");
+			}
+			
+			if (obj.getCpf().length() > 11) {
+				throw new IllegalArgumentException("CPF Inválido.");
+			}
+			
 			repoUser.save(obj);
 			Conta conta = new Conta(obj.getLogin(), 0 , "Conta Corrente");
 			repoConta.save(conta);

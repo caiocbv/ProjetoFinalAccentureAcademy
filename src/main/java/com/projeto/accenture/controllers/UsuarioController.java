@@ -36,7 +36,6 @@ public class UsuarioController {
 			List<UsuarioDTO> listDto = list.stream().map(obj -> new UsuarioDTO(obj)).collect(Collectors.toList());
 			return ResponseEntity.ok().body(listDto);
 		}
-		
 	
 	@ApiOperation(value = "BUSCAR POR LOGIN DO USUÁRIO OU POR ID")
 	@RequestMapping(value="/{param}", method = RequestMethod.GET)
