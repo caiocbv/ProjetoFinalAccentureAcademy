@@ -48,7 +48,7 @@ public class IUsuarioService {
 	}
 	
 	//-------- MÉTODO PARA BUSCAR POR LOGIN OS USUÁRIOS
-	public Usuario find (String login) {
+	public Usuario findLogin (String login) {
 		 Optional<Usuario> obj = repoUser.findByLogin(login);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado!"));
 	}
@@ -56,24 +56,26 @@ public class IUsuarioService {
 	//-------- MÉTODO PARA CADASTRAR OS USUÁRIOS / CONTA E PLANO DE CONTA
 	public Usuario insert(Usuario obj) {
 		try {
-			find(obj.getId());
+			obj.setId(null);
+			
+			String hashedPassword = passwordEncoder.encode(obj.getSenha());
+			obj.setSenha(hashedPassword);
+			
+			repoUser.save(obj);
+			Conta conta = new Conta(obj.getLogin(), 0 , "Conta Corrente");
+			repoConta.save(conta);
+			
+			
+			PlanosDeConta plano = new PlanosDeConta("SALÁRIO", obj.getLogin(), TipoMovimento.RECEITAS);
+			repoPlanoConta.save(plano);
+			
+			return obj;
+			
 		} catch (ObjectNotFoundException e) {
 			throw new ObjectNotFoundException("Usuário não encontrado!");
 		}
 		
-		String hashedPassword = passwordEncoder.encode(obj.getSenha());
-		obj.setSenha(hashedPassword);
 		
-		repoUser.save(obj);
-		
-		Conta conta = new Conta(obj.getLogin(), 0 , "Conta Corrente");
-		repoConta.save(conta);
-		
-		
-		PlanosDeConta plano = new PlanosDeConta("SALÁRIO", obj.getLogin(), TipoMovimento.RECEITAS);
-		repoPlanoConta.save(plano);
-		
-		return obj;
 	}
 	
 }
