@@ -9,5 +9,4 @@ import com.projeto.accenture.model.Conta;
 
 @Repository
 public interface IContaRepository extends JpaRepository<Conta, Integer>{ 
-	public ArrayList<Conta> findByLogin(String login);
 }

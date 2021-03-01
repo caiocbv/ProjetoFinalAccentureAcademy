@@ -3,12 +3,10 @@ package com.projeto.accenture.config;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,7 +18,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 import com.projeto.accenture.services.ILoginService;
 
@@ -28,7 +25,6 @@ import com.projeto.accenture.services.ILoginService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
@@ -41,15 +37,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Bean
-	public PasswordEncoder passwordEncoder(){
-		PasswordEncoder encoder = new BCryptPasswordEncoder();
-		return encoder;
+	public BCryptPasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
 	}
     
-	public void WebSecurity( ILoginService loginService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.loginService = loginService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+	//public void WebSecurity( ILoginService loginService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+   //     this.loginService = loginService;
+   //     this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+   // }
 	
 	
 	private static final String[] PUBLIC_MATCHERS = {
@@ -58,15 +53,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	};
 
 	private static final String[] PUBLIC_MATCHERS_GET = {		
-			
+			"/api/v1/usuario/**"
 	};
 
 	private static final String[] PUBLIC_MATCHERS_POST = {
-			"/pacientes/**",
-			"/funcionarios/**",
-			"/tratamentos/**",
-			"/antibioticos/**",
-			"/hospital/**"
+			"/api/v1/usuario/**"
+			
 	};
 	
 
@@ -80,6 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable().addFilterAfter(new JWTAuthorizationFilter(), 
 				UsernamePasswordAuthenticationFilter.class);
 		http.authorizeRequests()
+		
 			.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
 			.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
 			.antMatchers(HttpMethod.PUT, PUBLIC_MATCHERS_GET).permitAll()
