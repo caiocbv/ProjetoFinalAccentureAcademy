@@ -1,4 +1,4 @@
-package com.projeto.accenture.model.dto;
+package com.projeto.accenture.dto;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package com.projeto.accenture.model.repositories;
+package com.projeto.accenture.repositories;
 
 import java.util.ArrayList;
 

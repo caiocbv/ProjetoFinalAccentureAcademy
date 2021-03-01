@@ -1,8 +1,8 @@
-package com.projeto.accenture.model.services;
+package com.projeto.accenture.services;
 
+import com.projeto.accenture.dto.UsuarioDTO;
 import com.projeto.accenture.model.Lancamento;
 import com.projeto.accenture.model.Usuario;
-import com.projeto.accenture.model.dto.UsuarioDTO;
 import com.projeto.accenture.model.enums.TipoMovimento;
 
 public interface IUsuarioService {
