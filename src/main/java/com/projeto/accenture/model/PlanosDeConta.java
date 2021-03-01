@@ -30,10 +30,10 @@ public class PlanosDeConta {
 	
 	public PlanosDeConta() {}
 	
-	public PlanosDeConta(String descricao, Usuario login, int tipoMovimento) {
+	public PlanosDeConta(String descricao, String login, TipoMovimento tipoMovimento) {
 		this.descricao = descricao;
-		this.login = login.getLogin();
-		this.tipoMovimento = tipoMovimento;
+		this.login = login;
+		this.tipoMovimento = tipoMovimento.getCod();
 	}
 	public int getId() {
 		return id;

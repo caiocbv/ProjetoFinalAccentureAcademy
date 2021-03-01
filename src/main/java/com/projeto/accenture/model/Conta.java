@@ -37,11 +37,10 @@ public class Conta {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "conta", fetch = FetchType.EAGER)
 	private List<Lancamento> lancamentos = new ArrayList<>();
 	
-	Conta(){}
+	public Conta(){}
 	
-	Conta(Usuario loginUsuario, int numero, double saldo, String descricao){
-		this.loginUsuario=loginUsuario.getLogin();
-		this.numero= numero;
+	public Conta(String loginUsuario, double saldo, String descricao){
+		this.loginUsuario=loginUsuario;
 		this.saldo=saldo;
 		this.descricao=descricao;
 	}
