@@ -1,9 +1,9 @@
 # Projeto Final Accademia Accenture 2.0 - API Java
 
-Esse é o projeto final do curso intensivo de desenvolvimento Backend em Java, com duração de três semanas. Consiste em criar uma solução de Bank Line para realização de transações de Crédito, Débito e Transferência.<br><br>
+Esse é o projeto final do curso intensivo de desenvolvimento Backend em Java, com duração de três semanas.<br> Consiste em criar uma solução de Bank Line para realizar transações de Crédito, Débito e Transferência.<br><br>
 Uma parceria da [Gama Academy](https://www.gama.academy/) com a [Accenture](https://www.accenture.com/br-pt).
 
-![Fork](asset/logo_gama.jpg)
+![Fork](image/img_gama.jpg)
 
 ### Composição do grupo Behind The Lines
 

@@ -1,15 +1,33 @@
-package com.projeto.accenture.model.dto;
+package com.projeto.accenture.dto;
+
+import javax.validation.constraints.NotEmpty;
+
+import com.projeto.accenture.model.Usuario;
 
 public class UsuarioDTO {
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String login;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String nome;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String senha;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
 	private String cpf;
 	
-	public UsuarioDTO() {
-		// TODO Auto-generated constructor stub
+	public UsuarioDTO() {}
+	
+	public UsuarioDTO(Usuario obj) {
+		this.login = obj.getLogin();
+		this.nome = obj.getNome();
+		this.senha = obj.getSenha();
+		this.cpf = obj.getCpf();
 	}
 
+	
 	public String getLogin() {
 		return login;
 	}

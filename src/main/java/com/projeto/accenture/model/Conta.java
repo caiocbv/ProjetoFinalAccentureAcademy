@@ -1,10 +1,16 @@
 package com.projeto.accenture.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +19,6 @@ public class Conta {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_conta")
 	private int id;
 	
 	@Column(nullable = false, length = 20 , name="login")
@@ -29,11 +34,13 @@ public class Conta {
 	@Column(nullable = false , name="desc_conta")
 	private String descricao;
 	
-	Conta(){}
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "conta", fetch = FetchType.EAGER)
+	private List<Lancamento> lancamentos = new ArrayList<>();
 	
-	Conta(String loginUsuario, int numero, double saldo, String descricao){
+	public Conta(){}
+	
+	public Conta(String loginUsuario, double saldo, String descricao){
 		this.loginUsuario=loginUsuario;
-		this.numero= numero;
 		this.saldo=saldo;
 		this.descricao=descricao;
 	}
