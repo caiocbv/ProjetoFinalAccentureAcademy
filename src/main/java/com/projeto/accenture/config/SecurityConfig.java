@@ -41,10 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    return new BCryptPasswordEncoder();
 	}
     
-	public void WebSecurity( ILoginService loginService, BCryptPasswordEncoder bCryptPasswordEncoder) {
-       this.loginService = loginService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-   }
+	//public void WebSecurity( ILoginService loginService, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    //   this.loginService = loginService;
+   //     this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+  // }
 	
 	
 	private static final String[] PUBLIC_MATCHERS = {
