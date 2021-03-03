@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.accenture.dto.LancamentoDTO;
 import com.projeto.accenture.dto.UsuarioDTO;
-import com.projeto.accenture.model.Lancamento;
-import com.projeto.accenture.model.Usuario;
 import com.projeto.accenture.services.ILancamentoService;
 
 import io.swagger.annotations.ApiOperation;
@@ -28,6 +26,13 @@ public class LancamentoController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<List<LancamentoDTO>> findByUsuario(@Validated @RequestBody UsuarioDTO obj){
 		ResponseEntity<List<LancamentoDTO>> retorno = this.service.findByConta(obj.getLogin());
+		return retorno;
+	}
+	
+	@ApiOperation(value = "Listar Lancamentos do Usuário")
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<LancamentoDTO> registrarLancamento(@Validated @RequestBody LancamentoDTO obj){
+		ResponseEntity<LancamentoDTO> retorno = this.service.registrarLancamentoDTO(obj);
 		return retorno;
 	}
 	

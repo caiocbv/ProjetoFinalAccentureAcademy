@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotEmpty;
 
 import com.projeto.accenture.model.Lancamento;
+import com.projeto.accenture.model.enums.TipoMovimento;
+import com.sun.javadoc.LanguageVersion;
 
 public class LancamentoDTO {
 
@@ -84,6 +86,6 @@ public class LancamentoDTO {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	
+
 	
 }

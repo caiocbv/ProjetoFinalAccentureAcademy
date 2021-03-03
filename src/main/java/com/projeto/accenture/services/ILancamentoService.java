@@ -1,5 +1,6 @@
 package com.projeto.accenture.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,8 +12,10 @@ import com.projeto.accenture.dto.LancamentoDTO;
 import com.projeto.accenture.dto.UsuarioDTO;
 import com.projeto.accenture.model.Conta;
 import com.projeto.accenture.model.Lancamento;
+import com.projeto.accenture.model.PlanosDeConta;
 import com.projeto.accenture.repositories.IContaRepository;
 import com.projeto.accenture.repositories.ILancamentoRepository;
+import com.projeto.accenture.repositories.IPlanoDeContaRepository;
 
 public class ILancamentoService {
 
@@ -22,6 +25,9 @@ public class ILancamentoService {
 	@Autowired
 	private ILancamentoRepository lancamentoRepository;
 	
+	@Autowired
+	private IPlanoDeContaRepository planoDeContaRepository;
+	
 	public ResponseEntity<List<LancamentoDTO>> findByConta(String login) {
 		Optional<Conta> retornoConta = this.contaRepository.findByLogin(login);
 		if(retornoConta.isPresent()) {
@@ -30,6 +36,19 @@ public class ILancamentoService {
 			return ResponseEntity.ok().body(objtDTO);
 		}else 		
 		return null;
+	}
+
+	public ResponseEntity<LancamentoDTO> registrarLancamentoDTO(LancamentoDTO obj) {
+		Optional<Conta> conta = this.contaRepository.findByLogin(obj.getLogin());
+		Optional<PlanosDeConta> planoDeConta = this.planoDeContaRepository.getById(obj.getPlanoConta());
+		if(conta.isPresent()) {
+			Lancamento lancamento = new Lancamento(conta.get(), planoDeConta.get(),
+													obj.getValor(), obj.getDescricao(),
+													planoDeConta.get().getTipoMovimento().getCod(), obj.getDataLancamento());
+			
+		}else {
+			return null;
+		}
 	}
 
 }
