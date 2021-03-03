@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import com.projeto.accenture.model.enums.TipoMovimento;
 
@@ -16,15 +17,15 @@ public class PlanosDeConta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_planoConta")
-	private int id;
+	private Integer id;
 	
+	@NotEmpty(message="Preenchimento obrigatório")
 	@Column(nullable = false, name="desc_planoConta")
 	private String descricao;
 	
 	@Column(nullable = false)
 	private String login;
 	
-
 	@Column(nullable = false)
 	private int tipoMovimento;
 	
@@ -35,10 +36,10 @@ public class PlanosDeConta {
 		this.login = login;
 		this.tipoMovimento = tipoMovimento.getCod();
 	}
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getDescricao() {

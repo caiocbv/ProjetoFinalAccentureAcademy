@@ -17,7 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.projeto.accenture.dto.UsuarioDTO;
 import com.projeto.accenture.helpers.Helper;
 import com.projeto.accenture.model.Usuario;
-import com.projeto.accenture.services.IUsuarioService;
+import com.projeto.accenture.services.UsuarioService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiOperation;
 public class UsuarioController {
 	
 	@Autowired
-	private IUsuarioService service;
+	private UsuarioService service;
 	
 	// -------- MÉTODO DE LISTAR OS Usuarios, UTILIZEI UMA CLASSE DTO PARA FILTRAS AS INFORMAÇÕES PELO JSON
 		@RequestMapping(method = RequestMethod.GET)

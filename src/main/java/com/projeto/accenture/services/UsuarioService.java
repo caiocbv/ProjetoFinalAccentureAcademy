@@ -18,7 +18,7 @@ import com.projeto.accenture.repositories.IUsuarioRepository;
 import com.projeto.accenture.services.exceptions.ObjectNotFoundException;
 
 @Service
-public class IUsuarioService {
+public class UsuarioService {
 	
 	@Autowired
 	private IUsuarioRepository repoUser;

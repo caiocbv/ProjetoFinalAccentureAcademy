@@ -6,7 +6,6 @@ import javax.validation.constraints.NotEmpty;
 
 import com.projeto.accenture.model.Lancamento;
 import com.projeto.accenture.model.enums.TipoMovimento;
-import com.sun.javadoc.LanguageVersion;
 
 public class LancamentoDTO {
 

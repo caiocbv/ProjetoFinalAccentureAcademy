@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.accenture.dto.LoginDTO;
 import com.projeto.accenture.dto.SessaoDTO;
-import com.projeto.accenture.services.ILoginService;
+import com.projeto.accenture.services.LoginService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
 public class LoginController {
 	
 	@Autowired
-	private ILoginService loginService;
+	private LoginService loginService;
 	
 	
 	@ApiOperation(value = "API PARA LOGIN DO USUÁRIO")

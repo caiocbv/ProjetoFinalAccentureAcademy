@@ -22,7 +22,7 @@ public class Conta {
 	private int id;
 	
 	@Column(nullable = false, length = 20 , name="login")
-	private String loginUsuario;
+	private String login;
 	
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, length = 20)
@@ -40,7 +40,7 @@ public class Conta {
 	public Conta(){}
 	
 	public Conta(String loginUsuario, double saldo, String descricao){
-		this.loginUsuario=loginUsuario;
+		this.login=loginUsuario;
 		this.saldo=saldo;
 		this.descricao=descricao;
 	}
@@ -53,10 +53,10 @@ public class Conta {
 		this.id = id;
 	}
 	public String getLoginUsuario() {
-		return loginUsuario;
+		return login;
 	}
 	public void setLoginUsuario(String loginUsuario) {
-		this.loginUsuario = loginUsuario;
+		this.login = loginUsuario;
 	}
 	public int getNumero() {
 		return numero;
@@ -81,7 +81,7 @@ public class Conta {
 
 	@Override
 	public String toString() {
-		return "Conta [id=" + id + ", loginUsuario=" + loginUsuario + ", numero=" + numero + ", saldo=" + saldo
+		return "Conta [id=" + id + ", loginUsuario=" + login + ", numero=" + numero + ", saldo=" + saldo
 				+ ", descricao=" + descricao + "]";
 	}
 

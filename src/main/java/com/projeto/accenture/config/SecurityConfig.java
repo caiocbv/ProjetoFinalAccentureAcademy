@@ -19,7 +19,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.projeto.accenture.services.ILoginService;
+import com.projeto.accenture.services.LoginService;
 
 
 
@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private Environment env;
 	
 	@Autowired
-    private ILoginService loginService;
+    private LoginService loginService;
 	
 	@Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;

@@ -23,7 +23,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 
 @Service
-public class ILoginService {
+public class LoginService {
 	
 	@Autowired
 	private IUsuarioRepository repoUser;
