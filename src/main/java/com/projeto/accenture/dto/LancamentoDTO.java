@@ -5,12 +5,11 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotEmpty;
 
 import com.projeto.accenture.model.Lancamento;
+import com.projeto.accenture.model.enums.TipoMovimento;
+import com.sun.javadoc.LanguageVersion;
 
 public class LancamentoDTO {
 
-	@NotEmpty(message="Preenchimento obrigatório")
-	private int conta;
-	
 	@NotEmpty(message="Preenchimento obrigatório")
 	private String contaDestino;
 	
@@ -32,21 +31,12 @@ public class LancamentoDTO {
 	public LancamentoDTO() {}
 
 	public LancamentoDTO(Lancamento obj) {
-		this.conta = obj.getConta().getId();
 		this.contaDestino = obj.getConta().getLoginUsuario();
 		this.dataLancamento = obj.getDataLancamento();
 		this.descricao = obj.getDescricao();
 		this.login = obj.getConta().getLoginUsuario();
 		this.planoConta = obj.getPlanoConta().getId();
 		this.valor = obj.getValor();
-	}
-
-	public int getConta() {
-		return conta;
-	}
-
-	public void setConta(int conta) {
-		this.conta = conta;
 	}
 
 	public String getContaDestino() {
@@ -96,6 +86,6 @@ public class LancamentoDTO {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
-	
+
 	
 }
