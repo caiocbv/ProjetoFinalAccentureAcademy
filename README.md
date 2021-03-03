@@ -16,7 +16,7 @@ Uma parceria da [Gama Academy](https://www.gama.academy/) com a [Accenture](http
 
 ## 📝 Objetivo:
 
-Desenvolver webservices com arquitetura REST para atender as seguintes demandas:
+Uma ferramenta APIRest utilizada no auxílio da gestão de contas e lançamentos financeiros de um usuário que atenda as seguintes demandas:
 
 - Cadastro de Usuário - com campos de Login, Senha, Nome e CPF.
 - Ao realizar o cadastro, criar uma conta com saldo zero.
