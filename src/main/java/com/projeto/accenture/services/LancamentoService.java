@@ -6,49 +6,49 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.google.common.base.Optional;
 import com.projeto.accenture.dto.LancamentoDTO;
+import com.projeto.accenture.dto.PlanoContaDTO;
 import com.projeto.accenture.dto.UsuarioDTO;
 import com.projeto.accenture.model.Conta;
 import com.projeto.accenture.model.Lancamento;
 import com.projeto.accenture.model.PlanosDeConta;
+import com.projeto.accenture.model.Usuario;
 import com.projeto.accenture.repositories.IContaRepository;
 import com.projeto.accenture.repositories.ILancamentoRepository;
 import com.projeto.accenture.repositories.IPlanoDeContaRepository;
+import com.projeto.accenture.repositories.IUsuarioRepository;
+import com.projeto.accenture.services.exceptions.ObjectNotFoundException;
 
-public class ILancamentoService {
+@Service
+public class LancamentoService {
 
 	@Autowired
-	private IContaRepository contaRepository;
+	private IContaRepository repoConta;
 	
 	@Autowired
-	private ILancamentoRepository lancamentoRepository;
+	private ILancamentoRepository repoLancamento;
 	
 	@Autowired
-	private IPlanoDeContaRepository planoDeContaRepository;
+	private IPlanoDeContaRepository repoPlano;
 	
-	public ResponseEntity<List<LancamentoDTO>> findByConta(String login) {
-		Optional<Conta> retornoConta = this.contaRepository.findByLogin(login);
-		if(retornoConta.isPresent()) {
-			List<Lancamento> list = this.lancamentoRepository.findByConta(retornoConta.get());
-			List<LancamentoDTO> objtDTO = list.stream().map(obj -> new LancamentoDTO(obj)).collect(Collectors.toList());
-			return ResponseEntity.ok().body(objtDTO);
-		}else 		
-		return null;
-	}
-
-	public ResponseEntity<LancamentoDTO> registrarLancamentoDTO(LancamentoDTO obj) {
-		Optional<Conta> conta = this.contaRepository.findByLogin(obj.getLogin());
-		Optional<PlanosDeConta> planoDeConta = this.planoDeContaRepository.getById(obj.getPlanoConta());
-		if(conta.isPresent()) {
-			Lancamento lancamento = new Lancamento(conta.get(), planoDeConta.get(),
-													obj.getValor(), obj.getDescricao(),
-													planoDeConta.get().getTipoMovimento().getCod(), obj.getDataLancamento());
+	@Autowired
+	private IUsuarioRepository repoUser;
+	
+	
+	public List<Lancamento> findAll(String login) {
+		
+		if(repoUser.findByLogin(login).isPresent()) {
 			
-		}else {
-			return null;
+			return repoLancamento.findAll();
 		}
+		
+		throw new ObjectNotFoundException("Usuário não encontrado!");
+		
 	}
-
+	
 }
+
+
