@@ -74,7 +74,7 @@ public class UsuarioService {
 			
 			Random random = new Random();
 			
-			Conta conta = new Conta(obj.getLogin(),random.nextInt(), 0 , "Conta Corrente");
+			Conta conta = new Conta(obj.getLogin(),0, 0 , "Conta Corrente");
 			repoConta.save(conta);
 			
 			
