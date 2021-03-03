@@ -1,37 +1,63 @@
 package com.projeto.accenture.dto;
 
-import java.util.List;
+import javax.validation.constraints.NotEmpty;
 
 import com.projeto.accenture.model.Conta;
-import com.projeto.accenture.model.Lancamento;
+
 
 public class ContaDTO {
-	Conta conta;
-	List<Lancamento> lancamentos;
 	
-	public Conta getConta() {
-		return conta;
-	}	
-
-	public void setConta(Conta conta) {
-		this.conta = conta;
+	@NotEmpty(message="Preenchimento obrigatório")
+	private String loginUsuario;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
+	private int numero;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
+	private double saldo;
+	
+	@NotEmpty(message="Preenchimento obrigatório")
+	private String descricao;
+	
+	public ContaDTO() {}
+	
+	public ContaDTO(Conta obj){
+		this.loginUsuario=obj.getLoginUsuario();
+		this.saldo=obj.getSaldo();
+		this.descricao=obj.getDescricao();
 	}
 
-	public List<Lancamento> getLancamentos() {
-		return lancamentos;
+	public String getLoginUsuario() {
+		return loginUsuario;
 	}
 
-	public void setLancamentos(List<Lancamento> lancamentos) {
-		this.lancamentos = lancamentos;
+	public void setLoginUsuario(String loginUsuario) {
+		this.loginUsuario = loginUsuario;
 	}
 
-	public ContaDTO(Conta conta, List<Lancamento> lancamentos) {
-		super();
-		this.conta = conta;
-		this.lancamentos = lancamentos;
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(double saldo) {
+		this.saldo = saldo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
-	public ContaDTO() {
-		super();
-	}
+	
 }
