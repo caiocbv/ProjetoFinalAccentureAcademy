@@ -2,6 +2,7 @@ package com.projeto.accenture.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,7 +25,6 @@ public class Conta {
 	@Column(nullable = false, length = 20 , name="login")
 	private String login;
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, length = 20)
 	private int numero;
 	
@@ -39,8 +39,9 @@ public class Conta {
 	
 	public Conta(){}
 	
-	public Conta(String loginUsuario, double saldo, String descricao){
-		this.login=loginUsuario;
+	public Conta(String login,int numero, double saldo, String descricao){
+		this.login=login;
+		this.numero=numero;
 		this.saldo=saldo;
 		this.descricao=descricao;
 	}

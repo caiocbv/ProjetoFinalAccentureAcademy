@@ -2,6 +2,7 @@ package com.projeto.accenture.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -70,7 +71,10 @@ public class UsuarioService {
 			}
 			
 			repoUser.save(obj);
-			Conta conta = new Conta(obj.getLogin(), 0 , "Conta Corrente");
+			
+			Random random = new Random();
+			
+			Conta conta = new Conta(obj.getLogin(),random.nextInt(), 0 , "Conta Corrente");
 			repoConta.save(conta);
 			
 			
