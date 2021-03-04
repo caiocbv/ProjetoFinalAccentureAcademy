@@ -141,3 +141,11 @@ Para o login é necessário passar os dados de login e senha em json na requisi�
 Após executar, retornará o login realizado com sucesso e a criação de token de forma automatizada. Consumindo o endpoint de login corretamente:
 
 ![img-login](image/login-usuario.JPG)
+<br>
+--------------------------------------------------
+
+## Organização de Tarefas
+
+Por fim a exibição de nosso processo de desenvolvimento do projeto e divisão de tarefas que foram organizados na plataforma [Trello](https://trello.com/b/Zdt2sVqw/projeto-final-accenture). Abaixo uma parte da organização:
+
+![img-trello](image/trello.JPG)
