@@ -124,7 +124,7 @@ Para inserir novo usuário deve ser feita uma requisição post em json como o e
 
 Após executar, retornará o usuário criado, com o ID gerado automaticamente e com senha criptografada. Consumindo o endpoint corretamente como no exemplo a seguir:
 
-![img-usuario](image/post-usuario.jpg)
+![img-usuario](image/post-usuario.JPG)
 <br>
 
 ### II. Realizando Login
@@ -140,4 +140,4 @@ Para o login é necessário passar os dados de login e senha em json na requisi�
 
 Após executar, retornará o login realizado com sucesso e a criação de token de forma automatizada. Consumindo o endpoint de login corretamente:
 
-![img-login](image/login-usuario.jpg)
+![img-login](image/login-usuario.JPG)
