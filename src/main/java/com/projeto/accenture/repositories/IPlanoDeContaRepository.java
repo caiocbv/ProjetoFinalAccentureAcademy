@@ -13,4 +13,6 @@ public interface IPlanoDeContaRepository extends JpaRepository<PlanosDeConta, In
 	
 	Optional<PlanosDeConta> findById(Integer id);
 	
+	PlanosDeConta findByLogin(String login);
+	
 }

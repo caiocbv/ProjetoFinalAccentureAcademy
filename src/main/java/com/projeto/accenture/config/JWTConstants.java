@@ -2,5 +2,5 @@ package com.projeto.accenture.config;
 
 public class JWTConstants {
 	public static final String KEY = "ACCOUNT_SECRET_KEY";
-	public static final String PREFIX = "Bearer ";
+	public static final String PREFIX = "";
 }

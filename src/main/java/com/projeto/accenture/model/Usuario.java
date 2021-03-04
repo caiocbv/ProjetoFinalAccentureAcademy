@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
-@Table(name="Usuarios", uniqueConstraints={@UniqueConstraint(columnNames={"cpf","login"})})
+@Table(name="usuarios", uniqueConstraints = @UniqueConstraint(columnNames = {"login", "cpf"}, name = "login_unique_key"))
 public class Usuario{
 	
 	@Id

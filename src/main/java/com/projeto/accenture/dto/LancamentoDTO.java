@@ -4,38 +4,60 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projeto.accenture.model.Lancamento;
 import com.projeto.accenture.model.enums.TipoMovimento;
 
 public class LancamentoDTO {
-
-	@NotEmpty(message="Preenchimento obrigatório")
+	
+	@JsonIgnore
+	private Integer id;
+	
+	private Integer conta;
+	
 	private String contaDestino;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private LocalDate dataLancamento;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private String descricao;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private String login;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private int planoConta;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
+	private int tipoMovimento;
+	
 	private Double valor;
 	
 	public LancamentoDTO() {}
 
 	public LancamentoDTO(Lancamento obj) {
-		this.contaDestino = obj.getConta().getLoginUsuario();
+		this.id = obj.getId();
+		this.conta = obj.getConta().getId();
+		this.contaDestino = obj.getContaDestino();
 		this.dataLancamento = obj.getDataLancamento();
 		this.descricao = obj.getDescricao();
 		this.login = obj.getConta().getLoginUsuario();
-		this.planoConta = obj.getPlanoConta().getId();
+		this.planoConta = obj.getPlanoConta();
+		this.tipoMovimento = obj.getTipoMovimento();
 		this.valor = obj.getValor();
+	}
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getConta() {
+		return conta;
+	}
+
+	public void setConta(Integer conta) {
+		this.conta = conta;
 	}
 
 	public String getContaDestino() {
@@ -85,6 +107,25 @@ public class LancamentoDTO {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+
+	public TipoMovimento getTipoMovimento() {
+		return TipoMovimento.toEnum(getId());
+	}
+
+	public void setTipoMovimento(int tipoMovimento) {
+		this.tipoMovimento = tipoMovimento;
+	}
+
+	@Override
+	public String toString() {
+		return "LancamentoDTO [id=" + id + ", conta=" + conta + ", contaDestino=" + contaDestino + ", dataLancamento="
+				+ dataLancamento + ", descricao=" + descricao + ", login=" + login + ", planoConta=" + planoConta
+				+ ", tipoMovimento=" + tipoMovimento + ", valor=" + valor + "]";
+	}
+	
+	
+	
+	
 
 	
 }

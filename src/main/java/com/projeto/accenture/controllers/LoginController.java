@@ -16,7 +16,7 @@ import com.projeto.accenture.services.LoginService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value="/api/v1/")
+@RequestMapping(value="/api/v1/login")
 public class LoginController {
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class LoginController {
 	@ApiOperation(value = "API PARA LOGIN DO USUÁRIO")
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
-	public SessaoDTO loginUsuario(@Validated @RequestBody LoginDTO loginDto) {
+	public SessaoDTO loginUsuario(@Validated @RequestBody LoginDTO loginDto) throws Exception {
 		 
 		return loginService.validarLogin(loginDto);
 	}

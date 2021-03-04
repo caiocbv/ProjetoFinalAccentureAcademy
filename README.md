@@ -17,7 +17,7 @@ Uma parceria da [Gama Academy](https://www.gama.academy/) com a [Accenture](http
 
 ## Objetivo:
 
-Uma ferramenta APIRest utilizada no auxílio da gestão de contas e lançamentos financeiros de um usuário que atenda as seguintes demandas:
+Desenvolver ferramenta APIRest utilizada no auxílio da gestão de contas e lançamentos financeiros de um usuário que atenda as seguintes demandas:
 
 - Cadastro de Usuário - com campos de Login, Senha, Nome e CPF.
 - Ao realizar o cadastro, criar uma conta com saldo zero.
@@ -30,9 +30,26 @@ Uma ferramenta APIRest utilizada no auxílio da gestão de contas e lançamentos
 
 --------------------------------------------------
 
+## Tecnologias Utilizadas
+
+- Linguagem Java versão 11
+- Spring Boot 2.4.3
+- IDE Eclipse modificada para o framework Spring Boot(Spring Tools Suite)
+- Hibernate Validator 6.1.5 para validações de dados
+- Persistência de dados no MySQL
+
 ## Estrutura do Projeto
 
-A documentação da API está hospedada no Swagger e se encontra disponível [aqui](https://accountbank-api.herokuapp.com/swagger-ui.html).<br><br>
+A estrutura está dividida de acordo com a funcionalidade de cada pacote:
+- config: configurações de segurança do Spring Security e JWT
+- controllers: configurações das requisições da API com seus respectivos endpoints
+- exceptions: definição das exceções
+- dto: se encontram as classes que serão consumidas
+- enums: estão enumeradas os tipos de movimentação
+- model: definição das classes dos objetos utilizados
+- repositories: onde estão os JPA para acessar os dados do DB
+- services: onde se encontram as regras de negócios para manipulação do Model
+<br>
 
 ```jsx
 📦src/main/java
@@ -84,8 +101,43 @@ A documentação da API está hospedada no Swagger e se encontra disponível [aq
  ┃ ┃ ┣ 📜LancamentoService.java
  ┃ ┃ ┣ 📜LoginService.java
  ┃ ┃ ┣ 📜PlanoContaService.java
- ┃ ┃ ┣ 📜UsuarioService.java
+ ┗ ┗ ┗ 📜UsuarioService.java
 ```
 --------------------------------------------------
 
+## Funcionalidades
 
+Abaixo algumas funcionalidades da API. Os exemplos foram todos realizados como teste no [Swagger](https://accountbank-api.herokuapp.com/swagger-ui.html).
+
+### I. Criando usuário
+
+Para inserir novo usuário deve ser feita uma requisição post em json como o exemplo abaixo:
+
+```
+{
+  "cpf": "123456789",
+  "login": "patricia",
+  "nome": "Patrícia",
+  "senha": "000000"
+}
+```
+
+Após executar, retornará o usuário criado, com o ID gerado automaticamente e com senha criptografada. Consumindo o endpoint corretamente como no exemplo a seguir:
+
+![Fork](image/post-usuario.jpg)
+<br>
+
+### II. Realizando Login
+
+Para o login é necessário passar os dados de login e senha em json na requisição post:
+
+```
+{
+  "login": "patricia",
+  "senha": "000000"
+}
+```
+
+Após executar, retornará o login realizado com sucesso e a criação de token de forma automatizada. Consumindo o endpoint de login corretamente:
+
+![Fork](image/login-usuario.jpg)
