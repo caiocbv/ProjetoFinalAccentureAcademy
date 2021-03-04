@@ -25,20 +25,21 @@ public class LancamentoDTO {
 	
 	private int planoConta;
 	
-	
+	private int tipoMovimento;
 	
 	private Double valor;
 	
 	public LancamentoDTO() {}
 
-	public LancamentoDTO(Lancamento obj, String contaDestino) {
+	public LancamentoDTO(Lancamento obj) {
 		this.id = obj.getId();
 		this.conta = obj.getConta().getId();
-		this.contaDestino = contaDestino;
+		this.contaDestino = obj.getContaDestino();
 		this.dataLancamento = obj.getDataLancamento();
 		this.descricao = obj.getDescricao();
 		this.login = obj.getConta().getLoginUsuario();
-		this.planoConta = obj.getPlanoConta().getId();
+		this.planoConta = obj.getPlanoConta();
+		this.tipoMovimento = obj.getTipoMovimento();
 		this.valor = obj.getValor();
 	}
 	
@@ -106,6 +107,25 @@ public class LancamentoDTO {
 	public void setValor(Double valor) {
 		this.valor = valor;
 	}
+
+	public TipoMovimento getTipoMovimento() {
+		return TipoMovimento.toEnum(getId());
+	}
+
+	public void setTipoMovimento(int tipoMovimento) {
+		this.tipoMovimento = tipoMovimento;
+	}
+
+	@Override
+	public String toString() {
+		return "LancamentoDTO [id=" + id + ", conta=" + conta + ", contaDestino=" + contaDestino + ", dataLancamento="
+				+ dataLancamento + ", descricao=" + descricao + ", login=" + login + ", planoConta=" + planoConta
+				+ ", tipoMovimento=" + tipoMovimento + ", valor=" + valor + "]";
+	}
+	
+	
+	
+	
 
 	
 }

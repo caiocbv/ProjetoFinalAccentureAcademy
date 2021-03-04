@@ -11,5 +11,5 @@ import com.projeto.accenture.model.Conta;
 @Repository
 public interface IContaRepository extends JpaRepository<Conta, Integer>{
 
-	Optional<Conta> findByLogin(String login); 
+	Conta findByLogin(String login); 
 }

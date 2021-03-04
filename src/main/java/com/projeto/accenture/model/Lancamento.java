@@ -25,14 +25,16 @@ public class Lancamento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="conta_id")
 	private Conta conta;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private PlanosDeConta planoConta;
+	private String contaDestino;
+	
+	@Column(nullable = false)
+	private int planoConta;
 	
 	@Column(nullable = false, scale = 2)
 	private Double valor;
@@ -49,9 +51,10 @@ public class Lancamento {
 	
 	public Lancamento() {}
 
-	public Lancamento(Conta conta, PlanosDeConta planoConta, Double valor,String descricao, int tipoMovimento,
+	public Lancamento(Conta conta, int planoConta,String contaDestino, Double valor,String descricao, int tipoMovimento,
 			LocalDate dataLancamento) {
 		this.conta = conta;
+		this.contaDestino = contaDestino;
 		this.planoConta = planoConta;
 		this.valor = valor;
 		this.descricao = descricao;
@@ -61,11 +64,11 @@ public class Lancamento {
 
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -77,11 +80,11 @@ public class Lancamento {
 		this.conta = conta;
 	}
 
-	public PlanosDeConta getPlanoConta() {
+	public int getPlanoConta() {
 		return planoConta;
 	}
 
-	public void setPlanoConta(PlanosDeConta planoConta) {
+	public void setPlanoConta(int planoConta) {
 		this.planoConta = planoConta;
 	}
 
@@ -93,14 +96,15 @@ public class Lancamento {
 		this.valor = valor;
 	}
 
-	public TipoMovimento getTipoMovimento() {
-		return TipoMovimento.toEnum(tipoMovimento);
+	
+	public int getTipoMovimento() {
+		return tipoMovimento;
 	}
 
-	public void setTipoMovimento(TipoMovimento tipoMovimento) {
-		this.tipoMovimento = tipoMovimento.getCod();
+	public void setTipoMovimento(int tipoMovimento) {
+		this.tipoMovimento = tipoMovimento;
 	}
-	
+
 	public LocalDate getDataLancamento() {
 		return dataLancamento;
 	}
@@ -116,13 +120,25 @@ public class Lancamento {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	
+
+	public String getContaDestino() {
+		return contaDestino;
+	}
+
+	public void setContaDestino(String contaDestino) {
+		this.contaDestino = contaDestino;
+	}
 
 	@Override
 	public String toString() {
-		return "Lancamento [id=" + id + ", conta=" + conta + ", planoConta=" + planoConta + ", valor=" + valor
-				+ ", descricao=" + descricao + ", tipoMovimento=" + tipoMovimento + ", dataLancamento=" + dataLancamento
-				+ "]";
+		return "Lancamento [id=" + id + ", conta=" + conta + ", contaDestino=" + contaDestino + ", planoConta="
+				+ planoConta + ", valor=" + valor + ", descricao=" + descricao + ", tipoMovimento=" + tipoMovimento
+				+ ", dataLancamento=" + dataLancamento + "]";
 	}
+
+	
 
 	
 	

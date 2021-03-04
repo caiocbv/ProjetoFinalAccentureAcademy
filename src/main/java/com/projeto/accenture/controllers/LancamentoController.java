@@ -73,4 +73,18 @@ public class LancamentoController {
 	}
 	
 	
+	@ApiOperation(value = "CADASTRAR LANCAMENTO")
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@Validated @RequestBody Lancamento obj , @RequestParam String login){
+		
+		serviceLancamento.insert(obj,login);
+		 
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{login}").build(obj.getConta());
+		
+		return ResponseEntity.created(uri).build();	
+		
+	}
+	
+	
 }
