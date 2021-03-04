@@ -4,38 +4,59 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projeto.accenture.model.Lancamento;
 import com.projeto.accenture.model.enums.TipoMovimento;
 
 public class LancamentoDTO {
-
-	@NotEmpty(message="Preenchimento obrigatório")
+	
+	@JsonIgnore
+	private Integer id;
+	
+	private Integer conta;
+	
 	private String contaDestino;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private LocalDate dataLancamento;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private String descricao;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private String login;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
 	private int planoConta;
 	
-	@NotEmpty(message="Preenchimento obrigatório")
+	
+	
 	private Double valor;
 	
 	public LancamentoDTO() {}
 
-	public LancamentoDTO(Lancamento obj) {
-		this.contaDestino = obj.getConta().getLoginUsuario();
+	public LancamentoDTO(Lancamento obj, String contaDestino) {
+		this.id = obj.getId();
+		this.conta = obj.getConta().getId();
+		this.contaDestino = contaDestino;
 		this.dataLancamento = obj.getDataLancamento();
 		this.descricao = obj.getDescricao();
 		this.login = obj.getConta().getLoginUsuario();
 		this.planoConta = obj.getPlanoConta().getId();
 		this.valor = obj.getValor();
+	}
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getConta() {
+		return conta;
+	}
+
+	public void setConta(Integer conta) {
+		this.conta = conta;
 	}
 
 	public String getContaDestino() {
