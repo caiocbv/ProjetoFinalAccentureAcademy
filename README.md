@@ -4,7 +4,7 @@ Esse é o projeto final do curso intensivo de desenvolvimento Backend em Java, c
 <br><br>
 Uma parceria da [Gama Academy](https://www.gama.academy/) com a [Accenture](https://www.accenture.com/br-pt).
 
-![Fork](image/img_gama.jpg)
+![img-gama](image/img_gama.jpg)
 
 ### Composição do grupo Behind The Lines
 
@@ -124,7 +124,7 @@ Para inserir novo usuário deve ser feita uma requisição post em json como o e
 
 Após executar, retornará o usuário criado, com o ID gerado automaticamente e com senha criptografada. Consumindo o endpoint corretamente como no exemplo a seguir:
 
-![Fork](image/post-usuario.jpg)
+![img-usuario](image/post-usuario.jpg)
 <br>
 
 ### II. Realizando Login
@@ -140,4 +140,4 @@ Para o login é necessário passar os dados de login e senha em json na requisi�
 
 Após executar, retornará o login realizado com sucesso e a criação de token de forma automatizada. Consumindo o endpoint de login corretamente:
 
-![Fork](image/login-usuario.jpg)
+![img-login](image/login-usuario.jpg)
