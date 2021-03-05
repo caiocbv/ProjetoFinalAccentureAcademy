@@ -107,7 +107,7 @@ A estrutura está dividida de acordo com a funcionalidade de cada pacote:
 
 ## Funcionalidades
 
-Abaixo algumas funcionalidades da API. Os exemplos foram todos realizados como teste no [Swagger](https://accountbank-api.herokuapp.com/swagger-ui.html).
+Abaixo algumas funcionalidades da API. Os exemplos foram todos realizados como teste no [Swagger](https://projeto-final-accenture-api.herokuapp.com/).
 
 ### I. Criando usuário
 
@@ -115,16 +115,15 @@ Para inserir novo usuário deve ser feita uma requisição post em json como o e
 
 ```
 {
-  "cpf": "123456789",
-  "login": "patricia",
-  "nome": "Patrícia",
-  "senha": "000000"
+  "cpf": "38885995875",
+  "login": "testando123",
+  "nome": "Teste",
+  "senha": "123"
 }
 ```
 
-Após executar, retornará o usuário criado, com o ID gerado automaticamente e com senha criptografada. Consumindo o endpoint corretamente como no exemplo a seguir:
+Após executar, retornará o usuário criado, com o ID gerado automaticamente.
 
-![img-usuario](image/post-usuario.JPG)
 <br>
 
 ### II. Realizando Login
@@ -133,19 +132,42 @@ Para o login é necessário passar os dados de login e senha em json na requisi�
 
 ```
 {
-  "login": "patricia",
-  "senha": "000000"
+  "login": "testando123",
+  "senha": "123"
 }
 ```
 
-Após executar, retornará o login realizado com sucesso e a criação de token de forma automatizada. Consumindo o endpoint de login corretamente:
+Após executar, retornará o login realizado com sucesso e a criação de token de forma automática. Consumindo o endpoint de login corretamente:
 
-![img-login](image/login-usuario.JPG)
+![img-login](image/loginURL-token.JPG)
 <br>
+
+### III. Cadastro de Lançamento
+
+Para cadastrar um novo lançamento, é necessário inserir o login, tipo de movimento, descrição da transação, valor a ser lançado, além do Token para que a transação seja realizada com segurança. Veja abaixo:
+
+![img-cadLancamento](image/CadastroLancamento.JPG)
+<br>
+
+### IV. Extrato por data
+
+O extrato por data serve para o usuário verificar a movimentação de sua conta a partir de uma data inicial e data final definida pelo próprio usuário.
+
+A requisição é feita passando o Login, Data Inicial, Data Final e Token de segurança.
+
+![img-ext-data](image/extrato-data.JPG)
+<br>
+
+A requisição é retornada da seguinte maneira:
+
+![img-tela-ext-data](image/tela-ext-data.JPG)
+<br>
+
+
 --------------------------------------------------
 
 ## Organização de Tarefas
 
-Por fim a exibição de nosso processo de desenvolvimento do projeto e divisão de tarefas que foram organizados na plataforma [Trello](https://trello.com/b/Zdt2sVqw/projeto-final-accenture). Abaixo uma parte da organização:
+Por fim, a exibição de nosso processo de desenvolvimento do projeto e divisão de tarefas que foram organizados na plataforma Trello. pode ser conferida no seguinte link: [Projeto Final Accenture](https://trello.com/b/Zdt2sVqw/projeto-final-accenture). Abaixo uma parte da organização:
 
 ![img-trello](image/trello.JPG)
